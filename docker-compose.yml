@@ -1,0 +1,11 @@
+services:
+  arabic-text-summarizer:
+
+    build: .
+
+    container_name: arabic-text-summarizer
+
+    ports:
+      - "8501:8501"
+
+    restart: unless-stopped

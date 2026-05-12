@@ -1,5 +1,6 @@
 import re
 import torch
+import os
 import streamlit as st
 
 from transformers import (
@@ -31,7 +32,7 @@ st.markdown("Summarize Arabic text using Fine-Tuned mT5 + LoRA")
 @st.cache_resource
 def load_model():
 
-    model_path = "../models"
+    MODEL_PATH = os.path.join(os.getcwd(), "models")
 
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(
@@ -50,7 +51,7 @@ def load_model():
     # Load LoRA adapter
     model = PeftModel.from_pretrained(
         base_model,
-        model_path
+        MODEL_PATH
     )
 
     model.eval()
